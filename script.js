@@ -1,9 +1,10 @@
-const board=document.getElementById("board");
+const cells=document.querySelectorAll(".cell");
 const statusText=document.getElementById("status");
+const restartBtn=document.getElementById("restart");
 
-let cells=[];
 let currentPlayer="X";
-let gameActive=true;
+let board=["","","","","","","","",""];
+let running=true;
 
 const winPatterns=[
 [0,1,2],[3,4,5],[6,7,8],
@@ -11,88 +12,57 @@ const winPatterns=[
 [0,4,8],[2,4,6]
 ];
 
-/* CREATE BOARD */
+cells.forEach(cell=>cell.addEventListener("click",cellClick));
+restartBtn.addEventListener("click",restartGame);
 
-for(let i=0;i<9;i++){
-  const cell=document.createElement("div");
-  cell.classList.add("square");
-  cell.addEventListener("click",handleClick);
-  board.appendChild(cell);
-  cells.push(cell);
+function cellClick(){
+const index=this.dataset.index;
+
+if(board[index]!==""||!running)return;
+
+board[index]=currentPlayer;
+this.textContent=currentPlayer;
+this.classList.add(currentPlayer);
+
+checkWinner();
 }
 
-/* CLICK */
-
-function handleClick(e){
-
-  const cell=e.target;
-
-  if(cell.textContent!==""||!gameActive) return;
-
-  cell.textContent=currentPlayer;
-  cell.classList.add(currentPlayer.toLowerCase());
-
-  checkWinner();
-
-  currentPlayer=currentPlayer==="X"?"O":"X";
-
-  if(gameActive)
-    statusText.textContent=`Player ${currentPlayer} Turn`;
+function changePlayer(){
+currentPlayer=currentPlayer==="X"?"O":"X";
+statusText.textContent=`Player ${currentPlayer} Turn`;
 }
-
-/* WIN CHECK */
 
 function checkWinner(){
+let won=false;
 
-  for(const pattern of winPatterns){
-
-    const[a,b,c]=pattern;
-
-    if(
-      cells[a].textContent &&
-      cells[a].textContent===cells[b].textContent &&
-      cells[a].textContent===cells[c].textContent
-    ){
-      gameActive=false;
-
-      cells[a].classList.add("win");
-      cells[b].classList.add("win");
-      cells[c].classList.add("win");
-
-      statusText.textContent=`🎉 Player ${cells[a].textContent} Wins!`;
-      return;
-    }
-  }
-
-  if(cells.every(c=>c.textContent!=="")){
-    gameActive=false;
-    statusText.textContent="It's a Draw!";
-  }
+winPatterns.forEach(pattern=>{
+const[a,b,c]=pattern;
+if(board[a]&&board[a]===board[b]&&board[a]===board[c]){
+won=true;
 }
+});
 
-/* RESTART */
+if(won){
+statusText.textContent=`🎉 Player ${currentPlayer} Wins!`;
+running=false;
+}
+else if(!board.includes("")){
+statusText.textContent="🤝 Draw!";
+running=false;
+}
+else{
+changePlayer();
+}
+}
 
 function restartGame(){
-  cells.forEach(cell=>{
-    cell.textContent="";
-    cell.className="square";
-  });
+board=["","","","","","","","",""];
+running=true;
+currentPlayer="X";
+statusText.textContent="Player X Turn";
 
-  currentPlayer="X";
-  gameActive=true;
-  statusText.textContent="Player X Turn";
-}
-
-/* 3D PARALLAX MOTION */
-
-document.addEventListener("mousemove",(e)=>{
-
-  const x=(window.innerWidth/2-e.clientX)/60;
-  const y=(window.innerHeight/2-e.clientY)/60;
-
-  document.querySelectorAll(".flying-layer")
-    .forEach((layer,index)=>{
-      layer.style.transform=
-        `translate(${x*(index+1)}px,${y*(index+1)}px)`;
-    });
+cells.forEach(cell=>{
+cell.textContent="";
+cell.classList.remove("X","O");
 });
+}
