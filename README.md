@@ -2,7 +2,6 @@
 
 A modern and fully responsive Tic Tac Toe web game built using HTML, CSS, and JavaScript. The project features a smooth user interface, animated cartoon-style flying background, and interactive gameplay experience. Players can enjoy a classic two-player game with real-time turn updates, win detection, and restart functionality.
 
-The design focuses on responsive layout and visual effects, making the game playable across desktop, tablet, and mobile devices. This project demonstrates core front-end development concepts including DOM manipulation, event handling, animations, and responsive UI design.
 ---
 
 ## 🌟 Live Demo
