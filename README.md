@@ -7,8 +7,6 @@ A modern and fully responsive Tic Tac Toe web game built using HTML, CSS, and Ja
 ## 🌟 Live Demo
 👉 https://rafikshaik07.github.io/Tic-Tac-Toe-Game/
 
-*(Enable GitHub Pages to add your live link here)*
-
 ---
 
 ## 📸 Preview
