@@ -1,9 +1,8 @@
 # 🎮 Cartoon 3D Tic Tac Toe
 
-A modern **Tic Tac Toe web game** built using **HTML, CSS, and JavaScript**, featuring a colorful cartoon-style animated background with 3D motion effects and smooth gameplay interactions.
+A modern and fully responsive Tic Tac Toe web game built using HTML, CSS, and JavaScript. The project features a smooth user interface, animated cartoon-style flying background, and interactive gameplay experience. Players can enjoy a classic two-player game with real-time turn updates, win detection, and restart functionality.
 
-This project combines classic game logic with creative UI design to deliver a fun and visually engaging experience directly in the browser.
-
+The design focuses on responsive layout and visual effects, making the game playable across desktop, tablet, and mobile devices. This project demonstrates core front-end development concepts including DOM manipulation, event handling, animations, and responsive UI design.
 ---
 
 ## 🌟 Live Demo
