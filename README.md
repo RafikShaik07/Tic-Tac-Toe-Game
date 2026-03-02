@@ -38,3 +38,11 @@ A modern and fully responsive Tic Tac Toe web game built using HTML, CSS, and Ja
 ---
 
 ## 📂 Project Structure
+
+Tic-Tac-Toe-Game/
+│
+├── index.html      # Main game layout
+├── style.css       # Styling, animations & responsive design
+├── script.js       # Game logic and interactivity
+├── preview.png     # Project preview image (optional)
+└── README.md       # Project documentation
