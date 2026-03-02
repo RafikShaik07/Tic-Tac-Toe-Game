@@ -13,7 +13,7 @@ A modern and fully responsive Tic Tac Toe web game built using HTML, CSS, and Ja
 
 ## 📸 Preview
 
-![Game Preview](preview.png)
+![Game Preview](Game-Preview.png)
 
 ---
 
